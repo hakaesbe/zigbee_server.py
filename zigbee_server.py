@@ -78,6 +78,7 @@ def send_order(order):
             eui_dongle = line
             eui_dongle = eui_dongle.replace("\r", "")
             eui_dongle = eui_dongle.replace("\n", "")
+            print eui_dongle
     line = ""
     print '------------------------------------------'
 
@@ -446,6 +447,7 @@ class ZigbeeServer(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     try:
+        send_order("ATI\r")
         server = HTTPServer((SERVER_ZIGBEE_IP, int(SERVER_ZIGBEE_PORT)), ZigbeeServer)
         print("Started Zigbee HTTP server - " + time.asctime())
         server.serve_forever()
